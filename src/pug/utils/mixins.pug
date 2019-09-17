@@ -1,9 +1,16 @@
-mixin heading(title, descr)
+mixin heading(title, desc)
   .col-12.text-center
     .top-line
       h2= title
-      p.italic= descr
+      p.italic= desc
 
+
+
+mixin small-heading(title, desc)
+  .col-12.text-center
+      .heading-wrap
+        h3= title
+        p.italic= desc
 
 mixin card(title)
   .col-sm-12.col-md-4

@@ -81,9 +81,9 @@
 }
 
 //line
-@mixin line($left: 0, $top: 0){
+@mixin line($left: 0, $top: 0, $width: 50px){
   &:before{
-    @include size(50px, 2px);
+    @include size($width, 2px);
     background-color: $primary-color;
     content: '';
     display: block;
