@@ -1,0 +1,97 @@
+// px to rem
+@function rem($pixels, $context: $mainFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}
+
+//size mixin
+@mixin size($width,$height: $width) {
+  width: $width;
+  height: $height;
+}
+
+//overlay basic styles
+@mixin overlay-style($color){
+  @include size(100%);
+  background-color: $color;
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+}
+
+//overlay
+@mixin overlay($psevdo, $color){
+  @if($psevdo == 'before'){
+    &:before{
+      @include overlay-style($color);
+      @content
+    }
+  }@else if($psevdo == 'after'){
+    &:after{
+      @include overlay-style($color);
+      @content
+    }
+  }
+}
+
+//font
+@mixin fface($path, $family, $type: '', $weight: 400, $svg: '', $style: normal) {
+  @font-face {
+    font-family: $family;
+    @if $svg == '' {
+      // with OTF without SVG and EOT
+      src: url('#{$path}#{$type}.otf') format('opentype'), url('#{$path}#{$type}.woff2') format('woff2'), url('#{$path}#{$type}.woff') format('woff'), url('#{$path}#{$type}.ttf') format('truetype');
+    } @else {
+      // traditional src inclusions
+      src: url('#{$path}#{$type}.eot');
+      src: url('#{$path}#{$type}.eot?#iefix') format('embedded-opentype'), url('#{$path}#{$type}.woff2') format('woff2'), url('#{$path}#{$type}.woff') format('woff'), url('#{$path}#{$type}.ttf') format('truetype'), url('#{$path}#{$type}.svg##{$svg}') format('svg');
+    }
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+//bg image
+@mixin bgImg($imgName, $width, $height){
+  @include size($width, $height);
+  background-image: url('#{$imgPath}#{$imgName}.png');
+  background-repeat:no-repeat;
+  background-position: center center;
+}
+
+//responsive
+@mixin breakpoint($breakpoint){
+  @if($breakpoint == 'mobileonly'){
+    @media (max-width: 599px) { @content; }
+  }@else if($breakpoint == 'tablet-portrait-up'){
+    @media (min-width: 600px) { @content; }
+  }@else if($breakpoint == 'tablet-landscape-up'){
+    @media (min-width: 900px) { @content; }
+  }@else if($breakpoint == 'desktop-up'){
+    @media (min-width: 1200px) { @content; }
+  }@else if($breakpoint == 'big-desktop-up'){
+    @media (min-width: 1800px) { @content; }
+  }
+}
+
+//line
+@mixin line($left: 0, $top: 0){
+  &:before{
+    @include size(50px, 2px);
+    background-color: $primary-color;
+    content: '';
+    display: block;
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translateX(-$left);
+    @content;
+  }
+
+}

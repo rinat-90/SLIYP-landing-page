@@ -1,0 +1,21 @@
+include ../utils/mixins
+block variables
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title #{title}
+    meta(name="description", content=description)
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css' rel='stylesheet')
+    block head
+
+  body(class=pageClass)
+    include ../includes/modules/header
+    include ../includes/sections/about
+    include ../includes/sections/subscribe
+    include ../includes/sections/package
+
+
+    block content
+    block script

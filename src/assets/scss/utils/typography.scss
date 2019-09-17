@@ -1,0 +1,26 @@
+$sizes: 100, 70, 32, 28;
+
+@for $i from 1 through length($sizes) {
+  h#{$i}{
+    font-size: #{nth($sizes, $i)}px;
+    font-family: 'Heebo-Thin';
+    font-weight:800;
+    color: #000;
+    margin: 0;
+  }
+}
+
+h1 {
+  line-height: 147px;
+  font-weight: 500;
+}
+
+h2{
+  line-height:76px;
+  font-weight: 500;
+}
+
+p{
+  font-size:16px;
+  line-height:24px;
+}

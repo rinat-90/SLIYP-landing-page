@@ -1,0 +1,16 @@
+-var links = ['home', 'about', 'package', 'trip', 'testimony', 'blog', 'talk to us']
+header
+  .container
+    nav
+      .row
+        .col-md-3
+          a.logo(href="#") SLIYP
+        .col-md-9
+          ul.menu
+            each link in links
+              li
+                a.links(href='#')= link
+    .hero-text
+      span ENJOY YOUR
+      h1 HONEYMOON
+      span LEFT THE REST TO US
