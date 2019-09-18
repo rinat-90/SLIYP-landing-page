@@ -5,8 +5,15 @@ import { slick } from 'slick-carousel';
 
 
 $(document).ready(function () {
-  //alert('yahooooo')
 
+  $('.carousel').slick({
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    prevArrow: '<i class="prev"></i>',
+    nextArrow: '<i class="next"></i>',
+  });
 
 
 

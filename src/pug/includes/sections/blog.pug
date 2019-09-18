@@ -2,3 +2,24 @@ section.blog
     .container
         .row
             +heading('Blog','Sumpah ini semua kontennya nyolong dari blog orang')
+        .row
+            .col-md-4
+                .block
+                    .blog-img-wrap
+                        img.responsive-img(src='assets/img/blog-pic-1.jpg')
+                +card('Choose your breakfast carefully')
+                a.page-link(href='#') Learn more >
+            .col-md-4
+                .block
+                    .blog-img-wrap
+                        img.responsive-img(src='assets/img/blog-pic-2.jpg')
+                +card('Take your homeymoon to the next level')
+                a.page-link(href='#') Learn more >
+            .col-md-4
+                .block
+                    .blog-img-wrap
+                        img.responsive-img(src='assets/img/blog-pic-3.jpg')
+                +card('Don’t desttroy your holiday with gadget')
+                a.page-link(href='#') Learn more >
+        .row
+            +btn-center('View more stories')

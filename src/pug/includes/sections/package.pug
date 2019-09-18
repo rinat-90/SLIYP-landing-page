@@ -1,8 +1,9 @@
+- var titles = ['Luxury Paradise', 'Deluxe Gold', 'Premium Silver']
 section.package
     .container
         .row
             + heading('OUR PACKAGE','Jangan Percaya Tipu Tipu Aja Ini')
         .row
-            + card('Luxury Paradise')
-            + card('Deluxe Gold')
-            + card('Premium Silver')
+            each title in titles
+                .col-sm-12.col-md-4
+                    + card(title)

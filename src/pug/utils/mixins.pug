@@ -13,7 +13,10 @@ mixin small-heading(title, desc)
         p.italic= desc
 
 mixin card(title)
-  .col-sm-12.col-md-4
-    .card
-      h3= title
-      p.card-text Lorem ipsum dolor sit amet, id altera persequeris vim, mea an appareat prodesset. Cu mea error eripuit delicata. Nec soluta aliquid similique eu.
+  .card
+    h3= title
+    p.card-text Lorem ipsum dolor sit amet, id altera persequeris vim, mea an appareat prodesset. Cu mea error eripuit delicata. Nec soluta aliquid similique eu.
+
+mixin btn-center(title)
+  .btn-center-wrap
+    a.btn(href='#')= title

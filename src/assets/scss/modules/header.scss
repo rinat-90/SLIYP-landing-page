@@ -19,7 +19,6 @@ header{
     }
 
     .menu{
-
       float: right;
 
       li{
@@ -36,10 +35,7 @@ header{
           line-height:38px;
           text-transform: uppercase;
           color: $default-color;
-
-          &:hover{
-            color: $primary-color;
-          }
+          @include hover($primary-color);
 
           &.active{
             color: $primary-color;
@@ -65,14 +61,10 @@ header{
       margin: 0;
     }
     span{
-      font-family: 'Heebo-Light';
       font-size:24px;
       letter-spacing: 2px;
     }
   }
-
-
-
 
 
 }

@@ -1,10 +1,11 @@
 @import "utils/libs";
 @import "utils/vars";
 @import "utils/mixins";
-//@import "utils/grid";
 @import "utils/helpers";
 @import "utils/fonts";
 @import "utils/typography";
+
+*, *:before, *:after { box-sizing: border-box; }
 
 html {
   line-height: $mainLineHeight;
@@ -33,11 +34,6 @@ body {
 
 }
 
-*, *:before, *:after { box-sizing: border-box; }
-
-
-a { text-decoration: none; }
-
 ul, li {
   margin: 0;
   padding: 0;
@@ -50,6 +46,9 @@ ul, li {
 .page-link{
   font-family:'Heebo-Regular';
   color: $primary-color;
+  @include hover($primary-color){
+    text-decoration: underline;
+  }
 }
 
 .italic{
@@ -65,8 +64,15 @@ ul, li {
   margin-bottom:70px;
 }
 
-.theme-btn{
-  @extend %btn;
+.btn{
+  @include btn(#fff, $primary-color){
+    padding: 16px 78px;
+    margin-left: 20px;
+  }
+  @include hover($primary-color){
+    background-color: #fff;
+  }
+
 }
 
 .block{
@@ -75,12 +81,52 @@ ul, li {
   box-shadow: rgba(0,0,0, .16) 0 0 20px;
 }
 
+.text-center{
+  text-align: center;
+}
+
+.responsive-img{
+  @include size(100%);
+}
+
+.block-text{
+  @include line(50%, -30px);
+  position: relative;
+  margin: auto 50px;
+  margin-bottom: 30px;
+}
+
+.heading-wrap{
+  margin-bottom: 50px;
+}
+
+.btn-center-wrap{
+  margin-top:75px;
+  width:100%;
+  text-align: center;
+  position: relative;
+
+  .btn{
+    display: inline-block;
+    @include btn($primary-color, #fff, $primary-color);
+    @include hover(#fff){
+      background-color: $primary-color;
+    }
+  }
+}
+
+.card-text{
+  position: relative;
+  padding: 25px 0 25px 25px;
+  @include line;
+}
+
+.blog-img-wrap{
+  @include size(100%, 250px);
+}
+
 section{
   padding:100px 0;
-
-  &.about{
-    //padding-bottom:170px;
-  }
 
   &.subscribe{
     padding:70px 0;
@@ -92,29 +138,14 @@ section{
   &.package{
     background-color: #F7F7F7;
   }
+  
+  &.testimony{
+    background-image: url($imgPath + 'testimony.jpg');
+    background-position: center center;
+    background-size: cover;
+    color: #fff;
+  }
 }
-
-.text-center{
-  text-align: center;
-}
-
-
-.responsive-img{
-  @include size(100%);
-}
-
-.trip-text{
-  position: relative;
-  @include line(50%, -30px);
-  margin: auto 50px;
-  margin-bottom: 30px;
-
-}
-
-.heading-wrap{
-  margin-bottom: 50px;
-}
-
 
 .about{
 
@@ -142,28 +173,14 @@ section{
       top: 0;
       z-index:2;
 
-
       &:last-child{
         top: 100px;
         left: -100px;
         z-index:1;
-
       }
     }
   }
 
-}
-
-.btn{
-  border: 2px solid #fff;
-  border-radius: 2px;
-  outline: none;
-  padding: 16px 78px;
-  margin-left: 20px;
-  text-transform: uppercase;
-  background-color: $primary-color;
-  color: #fff;
-  display: inline-block;
 }
 
 .subscribe{
@@ -172,28 +189,12 @@ section{
     margin-top: 20px;
 
     input{
-      @include size(460px, 60px);
-      font-family:'Heebo-Regular';
-      background-color: lighten($primary-color, 10%);
-      border: 0;
-      outline: none;
-      padding-left:20px;
-      margin-bottom:20px;
-
-      &::-webkit-input-placeholder {
-        color: #fff;
-      }
+      @extend %text-field;
     }
 
 
   }
 
-}
-
-.card-text{
-  position: relative;
-  padding: 25px 0 25px 25px;
-  @include line;
 }
 
 .trips{
@@ -224,10 +225,10 @@ section{
         }
 
         .trips-info-inner{
-          //@include size(100%);
+          padding: 30px;
           position: absolute;
           width: 100%;
-          top:10%;
+          top:0;
           left: 0;
 
         }
@@ -239,26 +240,76 @@ section{
     }
   }
 
-  .dest-btn-wrap{
-    margin-top:75px;
-    width:100%;
-    text-align: center;
-    
-    .btn{
-      background-color: #fff;
-      color: $primary-color;
-      border: 2px solid $primary-color;
-
-      &:hover{
-        background-color: $primary-color;
-        color: #fff;
-      }
-    }
-  }
 
 
 }
 
+.blog{
+  .block{
+    margin-bottom: 30px;
+    .card{
+      h3{
+        font-size:28px;
+      }
+    }
+  }
+  .page-link{
+    float: right;
+  }
+}
+
+.testimony{
+  position: relative;
+  @include overlay('before', rgba(238,38,85,.7));
+
+  .top-line{
+    &:before{
+      background-color: #fff;
+    }
+    p, h2{
+      color: #fff;
+    }
+  }
+
+  .carousel{
+    position: relative;
+    width: 100%;
+
+    .slide{
+      text-align: center;
+
+      .feedback-title{
+        font-family: 'PT Serif';
+        font-size: 46px;
+        font-style: italic;
+        color: #FFE200;
+        margin-bottom:15px;
+        
+      }
+      .feedback-text{
+        padding: 0 15%;
+        margin-bottom: 15px;
+      }
+      .feedback-author{
+        font-family: 'PT Serif';
+        font-size: 20px;
+      }
+    }
+
+    .prev{
+      @include arrow('prev.png'){
+        left:0;
+      }
+    }
+    .next{
+      @include arrow('next.png'){
+        right: 0;
+      }
+    }
+
+  }
+  
+}
 
 
 

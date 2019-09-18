@@ -60,7 +60,7 @@
 //bg image
 @mixin bgImg($imgName, $width, $height){
   @include size($width, $height);
-  background-image: url('#{$imgPath}#{$imgName}.png');
+  background-image: url('#{$imgPath}#{$imgName}');
   background-repeat:no-repeat;
   background-position: center center;
 }
@@ -94,4 +94,35 @@
     @content;
   }
 
+}
+
+//btn
+@mixin btn($bor-color, $bg-color, $txt-color: #fff){
+  border: 2px solid $bor-color;
+  background-color: $bg-color;
+  color: $txt-color;
+  @extend %btn;
+  @content;
+}
+
+//link hover
+@mixin hover($color){
+  &:hover{
+    color: $color;
+    @content;
+  }
+}
+
+//carousel arrows
+@mixin arrow($img){
+  @include size(40px, 78px);
+  background-image: url($imgPath + $img);
+  background-repeat:no-repeat;
+  background-position: center center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index:1;
+  @content
 }
