@@ -1,3 +1,10 @@
+-var links = ['faq', 'help', 'privacy', 'term']
 footer
   .container
-    span footer is here
+    .row
+      .col-12
+        a.logo(href="#") SLIYP
+        ul.footer-nav
+          each link in links
+            li
+              a.nav-link(href='#')= link

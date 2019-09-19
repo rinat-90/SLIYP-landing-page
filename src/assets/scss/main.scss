@@ -40,6 +40,20 @@ ul, li {
   list-style-type: none;
 }
 
+.nav-link{
+  font-family: 'Heebo-Regular';
+  font-size: 14px;
+  line-height:38px;
+  text-transform: uppercase;
+  color: $default-color;
+  @include hover($primary-color);
+
+  &.active{
+    color: $primary-color;
+  }
+
+}
+
 .index-page{
 }
 
@@ -128,6 +142,10 @@ ul, li {
 section{
   padding:100px 0;
 
+  &.about{
+    padding-bottom:150px;
+  }
+
   &.subscribe{
     padding:70px 0;
     background-color: $primary-color;
@@ -135,14 +153,26 @@ section{
     text-align: center;
   }
 
+  &.trips{
+    @include bgImg('map.png'){
+      background-position: top center;
+    }
+  }
+
   &.package{
     background-color: #F7F7F7;
   }
   
   &.testimony{
-    background-image: url($imgPath + 'testimony.jpg');
-    background-position: center center;
-    background-size: cover;
+    color: #fff;
+    @include bgImg('testimony.jpg'){
+      background-size: cover;
+    }
+
+  }
+  
+  &.contact{
+    background-color: $primary-color;
     color: #fff;
   }
 }
@@ -162,7 +192,7 @@ section{
   }
   .about-media{
     @include size(100%);
-    min-height: 670px;
+    min-height: 500px;
     position: relative;
     display: block;
 
@@ -198,9 +228,6 @@ section{
 }
 
 .trips{
-  background-image: url($imgPath + 'map.png');
-  background-position: top center;
-  background-repeat:no-repeat;
 
   .block{
     margin-bottom:30px;
@@ -311,7 +338,87 @@ section{
   
 }
 
+.contact{
+  position: relative;
 
+  h2{
+    color: #fff;
+  }
+  h3{
+    text-transform: uppercase;
+    color: #fff;
+    display: block;
+    width:100%;
+    //margin:20px 0;
+  }
+
+  .italic{
+    color: #fff;
+
+    &.contact-text{
+      margin-top:70px;
+      position: relative;
+      @include line($top: -35px){
+        background-color: #fff;
+      }
+    }
+  }
+
+  .btn-center-wrap{
+    text-align: left;
+
+    .btn{
+      margin: 0;
+      @include hover(#fff){
+        border-color: #fff;
+      }
+    }
+  }
+
+  .social{
+    margin-bottom:30px;
+    .social-item{
+      display: inline-block;
+      margin-left:20px;
+      &:first-child{
+        margin-left: 0;
+      }
+
+      $icons: 'facebook', 'instagram', 'twitter', 'indeed';
+
+      @each $icon in $icons{
+        .#{$icon}{
+          @include circle(54px){
+            @include bgImg('#{$icon}.png');
+          }
+        }
+      }
+
+    }
+  }
+
+  .address{
+    width:100%;
+    padding: 0 50px;
+    position: absolute;
+    top:50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    .address-list{
+      position: relative;
+      @include line($top: -20px);
+      margin-top:50px;
+      
+      &:before {
+        background-color: #fff;
+      }
+    }
+  }
+
+
+}
 
 // Modules
 @import "modules/header";
+@import "modules/footer";

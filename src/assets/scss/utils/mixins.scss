@@ -15,28 +15,17 @@
   height: $height;
 }
 
-//overlay basic styles
-@mixin overlay-style($color){
-  @include size(100%);
-  background-color: $color;
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-}
 
 //overlay
 @mixin overlay($psevdo, $color){
-  @if($psevdo == 'before'){
-    &:before{
-      @include overlay-style($color);
-      @content
-    }
-  }@else if($psevdo == 'after'){
-    &:after{
-      @include overlay-style($color);
-      @content
-    }
+  &:#{$psevdo}{
+    @include size(100%);
+    background-color: $color;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    @content
   }
 }
 
@@ -58,11 +47,11 @@
 }
 
 //bg image
-@mixin bgImg($imgName, $width, $height){
-  @include size($width, $height);
+@mixin bgImg($imgName){
   background-image: url('#{$imgPath}#{$imgName}');
   background-repeat:no-repeat;
   background-position: center center;
+  @content;
 }
 
 //responsive
@@ -125,4 +114,13 @@
   cursor: pointer;
   z-index:1;
   @content
+}
+
+//circle
+@mixin circle($size, $color: #fff){
+  border-radius: 50%;
+  border: 2px solid $color;
+  display: block;
+  @include size($size);
+  @content;
 }

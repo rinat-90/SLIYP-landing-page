@@ -1,1 +1,36 @@
-// footer style
+footer{
+  padding:30px;
+  background-color: darken($primary-color, 10%);
+  color: #fff;
+
+  .logo{
+    font-family: 'Heebo-Light';
+    font-size:24px;
+    color: #fff;
+    float: left;
+    display: block;
+  }
+
+  .footer-nav{
+    float: right;
+
+    li{
+      display: inline-block;
+      margin-left:30px;
+
+      &:first-child{
+        margin-left:0;
+      }
+      
+      a{
+        color: #fff;
+        opacity: 0.7;
+        line-height:38px;
+
+        @include hover(#fff){
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

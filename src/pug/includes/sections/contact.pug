@@ -1,0 +1,24 @@
+-var social = ['facebook', 'instagram', 'twitter', 'indeed'];
+section.contact
+    .container
+        .row
+            .col-md-6
+                h2 DONT BE SHY TALK TO US
+                p.italic.contact-text Karyawan Kami Sebenarnya Malas Jawab Email Kelen
+                  | tapi mau gimana lagi kan ya… tuntutan pekerjaan
+                  | ya udah segitu aja curhatnya hiks
+                +btn-center('contact us')
+            .col-md-6
+                .row
+                    .address
+                        ul.social
+                            each className in social
+                                li.social-item
+                                    a.social-link(href='#')(class= className)
+                        h3 ADDRESS
+                        ul.address-list
+                            li PKF Texas
+                            li 5847 San Felipe,  Luxury Royale Suite 2600
+                            li Houston, Texas 77057
+                            li 713.860.1400
+                            li 713.355.3909

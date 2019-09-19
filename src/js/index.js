@@ -2,9 +2,10 @@ import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
 
 import { slick } from 'slick-carousel';
-
+import { modal } from 'jquery-modal'
 
 $(document).ready(function () {
+
 
   $('.carousel').slick({
     infinite: true,
@@ -15,6 +16,6 @@ $(document).ready(function () {
     nextArrow: '<i class="next"></i>',
   });
 
-
+  $('#form-modal').modal();
 
 })

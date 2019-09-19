@@ -1,12 +1,11 @@
 header{
-  @include size(100%, 100vh);
-  background-image: url($imgPath + 'hero.jpg');
-  background-repeat:no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment:fixed;
   padding-top:40px;
   position: relative;
+  @include size(100%, 100vh);
+  @include bgImg('hero.jpg'){
+    background-size: cover;
+    background-attachment:fixed;
+  }
 
   nav{
     padding:15px;
@@ -27,20 +26,6 @@ header{
 
         &:last-child{
           margin-right: 0;
-        }
-
-        .links{
-          font-family: 'Heebo-Regular';
-          font-size: 14px;
-          line-height:38px;
-          text-transform: uppercase;
-          color: $default-color;
-          @include hover($primary-color);
-
-          &.active{
-            color: $primary-color;
-          }
-
         }
       }
 
