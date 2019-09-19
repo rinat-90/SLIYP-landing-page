@@ -4,6 +4,7 @@
 @import "utils/helpers";
 @import "utils/fonts";
 @import "utils/typography";
+@import "utils/medial";
 
 *, *:before, *:after { box-sizing: border-box; }
 
@@ -81,7 +82,6 @@ ul, li {
 .btn{
   @include btn(#fff, $primary-color){
     padding: 16px 78px;
-    margin-left: 20px;
   }
   @include hover($primary-color){
     background-color: #fff;
@@ -306,16 +306,14 @@ section{
       text-align: center;
 
       .feedback-title{
+        position: relative;
         font-family: 'PT Serif';
         font-size: 46px;
         font-style: italic;
         color: #FFE200;
         margin-bottom:15px;
+        top:50%;
         
-      }
-      .feedback-text{
-        padding: 0 15%;
-        margin-bottom: 15px;
       }
       .feedback-author{
         font-family: 'PT Serif';
